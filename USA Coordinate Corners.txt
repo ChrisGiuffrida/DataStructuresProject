@@ -1,0 +1,6 @@
+USA Coordinate Corners
+
+NW = 49, -125
+NE = 49, -67
+SE = 25, -67
+SW = 25, -125
