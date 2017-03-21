@@ -45,13 +45,13 @@ api  = tweepy.API(auth, parser=tweepy.parsers.JSONParser())
 searchTerm = "comey"
 LAT = 38.904722
 LON = -77.016389
-numTweets = 1
 '''
+numTweets = 1
 
 searchTerm = raw_input("Enter a search term:        ")
 LAT = raw_input("Enter a latitude:           ")
 LON = raw_input("Enter a longitude:          ")
-numTweets = raw_input("Number of tweets to be displayed:  ")
+#numTweets = raw_input("Number of tweets to be displayed:  ")
 
 #Return a JSON object of tweets from the Twitter API call that match the given search terms
 tweets = api.search(q=searchTerm, count=numTweets, lang='en', geocode=str(LAT) + ',' + str(LON) + ',' + '60mi')
