@@ -62,8 +62,11 @@ for status in tweets['statuses']:
 	searchResults.append(status['text'])
 
 # Ensures there were tweets, i.e. searchResults is not empty
-if (not not searchResults):
+if (not searchResults):
+	# No tweets were found.
+	print ("No tweets found near {}, {}!").format(LAT, LON)
 
+else:
 	#Instantiate a LocationData class to store all the tweets from a given location
 	location1 = LocationData(searchResults, LAT, LON)
 
@@ -96,7 +99,3 @@ if (not not searchResults):
 		for tone_category in watResults["document_tone"]["tone_categories"]:
 			for tone in tone_category["tones"]:
 				print ("{}: {}").format(tone["tone_name"],tone["score"])
-
-# If no tweets found.
-else:
-	print ("No tweets found near {}, {}! :(").format(LAT, LON)
