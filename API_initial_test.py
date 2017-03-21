@@ -90,9 +90,9 @@ if (not not searchResults):
 			indent=4))
 		'''
 		watResults = watsonToneDetector.tone(
-						text=location1.tweets[0],
-						sentences=False,
-						tones="emotion")
+			text=location1.tweets[0],
+			sentences=False,
+			tones="emotion")
 		for tone_category in watResults["document_tone"]["tone_categories"]:
 			for tone in tone_category["tones"]:
 				print ("{}: {}").format(tone["tone_name"],tone["score"])
