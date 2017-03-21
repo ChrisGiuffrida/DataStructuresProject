@@ -81,7 +81,7 @@ else:
 
 	#Print the tone information for the first tweet
 
-	# Ensures there are tweets to be analyzed (This is redundant rn tbh but
+	# Ensures there are tweets to be analyzed (This is redundant right now but
 	# 		might be useful later).
 	if (location1.hasTweets):
 		'''
