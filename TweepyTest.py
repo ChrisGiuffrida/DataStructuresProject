@@ -47,6 +47,7 @@ LAT = 38.904722
 LON = -77.016389
 numTweets = 1
 '''
+
 searchTerm = raw_input("Enter a search term:        ")
 LAT = raw_input("Enter a latitude:           ")
 LON = raw_input("Enter a longitude:          ")
