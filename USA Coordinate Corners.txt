@@ -9,3 +9,11 @@ SW = 25, -125
 58 Horizontal
 
 1,392 Elements x 100 Tweets = 139,200 Tweets
+
+
+Emotion Colors:
+Anger = red
+Disgust = green
+Fear = purple/magenta
+Joy = yellow/orange
+Sadness = blue
