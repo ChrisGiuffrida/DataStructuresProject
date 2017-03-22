@@ -33,50 +33,49 @@ cities = {
     '12phoenix':["Phoenix, AZ", 33.4484, -112.0740]
 }
 
-#for city in sorted(cities):
-#    print ("{}\t{}\t{}").format(cities.get(city)[0],cities.get(city)[1],cities.get(city)[2])
-
 query = raw_input("Enter a query: ")
-latitude = cities.get('01new_york_city')[1]
-longitude = cities.get('01new_york_city')[2]
 num_tweets = 100
 
-tweets = twitter_api.search(q=query, count=num_tweets, lang='en', geocode=str(latitude) + ',' + str(longitude) + ',' + '60mi')
+for city in sorted(cities):
+#    print ("{}\t{}\t{}").format(cities.get(city)[0],cities.get(city)[1],cities.get(city)[2])
+    latitude = cities.get(city)[1]
+    longitude = cities.get(city)[2]
 
+    tweets = twitter_api.search(q=query, count=num_tweets, lang='en', geocode=str(latitude) + ',' + str(longitude) + ',' + '60mi')
 
-results = [ ]
-for status in tweets['statuses']:
-    results.append(status['text'])
+    results = [ ]
+    for status in tweets['statuses']:
+        results.append(status['text'])
 
-counter = 1
-sentence_string = ""
-for line in results:
-    line = re.sub('[.]', '', line)
-    sentence_string += ". " + line
+    counter = 1
+    sentence_string = ""
+    for line in results:
+        line = re.sub('[.]', '', line)
+        sentence_string += ". " + line
 
-#Instantiate a ToneAnalyzer object using the Watson Developer Cloud Library
-watsonToneDetector = ToneAnalyzerV3(
-	username='c8fe8d6c-48aa-45cc-8a45-068f253f5fb6',
-	password='fOltvpcxG1Tw',
-	version='2017-02-03')
+    #Instantiate a ToneAnalyzer object using the Watson Developer Cloud Library
+    watsonToneDetector = ToneAnalyzerV3(
+    	username='c8fe8d6c-48aa-45cc-8a45-068f253f5fb6',
+    	password='fOltvpcxG1Tw',
+    	version='2017-02-03')
 
-print(json.dumps(
-    watsonToneDetector.tone(
-        text=sentence_string,
-        sentences=True,
-        tones='emotion'),
-	indent=4))
+    '''
+    print(json.dumps(
+        watsonToneDetector.tone(
+            text=sentence_string,
+            sentences=True,
+            tones='emotion'),
+    	indent=4))
+    '''
 
+    wat_results = watsonToneDetector.tone(
+            text=sentence_string,
+            sentences=True,
+            tones='emotion')
 
-'''
-wat_results = watsonToneDetector.tone(
-        text=sentence_string,
-        sentences=True,
-        tones='emotion'),
-	indent=4))
-
-for tone_category in wat_results["document_tone"]["tone_categories"]:
-    for tone in tone_category["tones"]:
-        print("Overall Emotions:")
-        print ("{}: {}").format(tone["tone_name"],tone["score"])
-'''
+    for tone_category in wat_results["document_tone"]["tone_categories"]:
+        print
+        print cities.get(city)[0],
+        print(": ")
+        for tone in tone_category["tones"]:
+            print ("{}: {}").format(tone["tone_name"],tone["score"])
