@@ -1,0 +1,41 @@
+Tweets from 38.904722, -77.016389
+----------------------
+1.)	RT @youlivethrice: My name is Paul Ryan and I'm not going to defend Donald Trump. https://t.co/bcUix0Bj6v
+
+{
+    "document_tone": {
+        "tone_categories": [
+            {
+                "category_id": "emotion_tone",
+                "tones": [
+                    {
+                        "tone_name": "Anger",
+                        "score": 0.009377,
+                        "tone_id": "anger"
+                    },
+                    {
+                        "tone_name": "Disgust",
+                        "score": 0.853791,
+                        "tone_id": "disgust"
+                    },
+                    {
+                        "tone_name": "Fear",
+                        "score": 0.056235,
+                        "tone_id": "fear"
+                    },
+                    {
+                        "tone_name": "Joy",
+                        "score": 0.01251,
+                        "tone_id": "joy"
+                    },
+                    {
+                        "tone_name": "Sadness",
+                        "score": 0.135948,
+                        "tone_id": "sadness"
+                    }
+                ],
+                "category_name": "Emotion Tone"
+            }
+        ]
+    }
+}

@@ -46,7 +46,7 @@ searchTerm = "comey"
 LAT = 38.904722
 LON = -77.016389
 '''
-numTweets = 1
+numTweets = 100
 
 searchTerm = raw_input("Enter a search term:        ")
 LAT = raw_input("Enter a latitude:           ")
@@ -68,10 +68,10 @@ if (not searchResults):
 
 else:
 	#Instantiate a LocationData class to store all the tweets from a given location
-	location1 = LocationData(searchResults, LAT, LON)
+	current_location = LocationData(searchResults, LAT, LON)
 
 	#Print the tweets for the given location
-	location1.printData()
+	current_location.printData()
 
 	#Instantiate a ToneAnalyzer object using the Watson Developer Cloud Library
 	watsonToneDetector = ToneAnalyzerV3(
@@ -79,23 +79,11 @@ else:
 	    password='fOltvpcxG1Tw',
 	    version='2017-02-03')
 
-	#Print the tone information for the first tweet
-
-	# Ensures there are tweets to be analyzed (This is redundant right now but
-	# 		might be useful later).
-	if (location1.hasTweets):
-		'''
-		print(json.dumps(
-			watsonToneDetector.tone(
-				text=location1.tweets[0],
-				sentences=False,
-				tones="emotion"),
-			indent=4))
-		'''
-		watResults = watsonToneDetector.tone(
-			text=location1.tweets[0],
-			sentences=False,
-			tones="emotion")
-		for tone_category in watResults["document_tone"]["tone_categories"]:
-			for tone in tone_category["tones"]:
-				print ("{}: {}").format(tone["tone_name"],tone["score"])
+	# Print the tone information for the first tweet
+	watResults = watsonToneDetector.tone(
+		text=current_location.tweets[0],
+		sentences=False,
+		tones="emotion")
+	for tone_category in watResults["document_tone"]["tone_categories"]:
+		for tone in tone_category["tones"]:
+			print ("{}: {}").format(tone["tone_name"],tone["score"])
