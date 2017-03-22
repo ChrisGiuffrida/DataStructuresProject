@@ -84,18 +84,15 @@ else:
 	# Ensures there are tweets to be analyzed (This is redundant right now but
 	# 		might be useful later).
 	if (location1.hasTweets):
-		'''
 		print(json.dumps(
 			watsonToneDetector.tone(
 				text=location1.tweets[0],
-				sentences=False,
-				tones="emotion"),
+				sentences=False),
 			indent=4))
-		'''
 		watResults = watsonToneDetector.tone(
 			text=location1.tweets[0],
-			sentences=False,
-			tones="emotion")
+			sentences=False)
+		
 		for tone_category in watResults["document_tone"]["tone_categories"]:
 			for tone in tone_category["tones"]:
 				print ("{}: {}").format(tone["tone_name"],tone["score"])
