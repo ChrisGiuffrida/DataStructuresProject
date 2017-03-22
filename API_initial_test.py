@@ -79,7 +79,6 @@ else:
 	    password='fOltvpcxG1Tw',
 	    version='2017-02-03')
 
-<<<<<<< HEAD
 	#Print the tone information for the first tweet
 
 	# Ensures there are tweets to be analyzed (This is redundant right now but
@@ -93,11 +92,10 @@ else:
 		watResults = watsonToneDetector.tone(
 			text=location1.tweets[0],
 			sentences=False)
-		
+
 		for tone_category in watResults["document_tone"]["tone_categories"]:
 			for tone in tone_category["tones"]:
 				print ("{}: {}").format(tone["tone_name"],tone["score"])
-=======
 	# Print the tone information for the first tweet
 	watResults = watsonToneDetector.tone(
 		text=current_location.tweets[0],
@@ -106,4 +104,3 @@ else:
 	for tone_category in watResults["document_tone"]["tone_categories"]:
 		for tone in tone_category["tones"]:
 			print ("{}: {}").format(tone["tone_name"],tone["score"])
->>>>>>> a50b62cce2c9a78e12aa88fc1c8617d63653748b
