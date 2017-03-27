@@ -17,3 +17,21 @@ Disgust = green (#00FF00)
 Fear = purple/magenta (#CC00FF)
 Joy = yellow/orange (#FFBF00)
 Sadness = blue (#0000FF)
+
+
+Top 15 Primary Statistical Areas:
+1.  New York City
+2.  Los Angeles
+3.  Chicago
+4.  Washington-Baltimore
+5.  San Francisco
+6.  Boston
+7.  Dallas
+8.  Philadelphia
+9.  Houston
+10. Miami
+11. Atlanta
+12. Detroit
+13. Seattle
+14. Phoenix
+15. Minneapolis
