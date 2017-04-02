@@ -43,7 +43,7 @@ def average_city_emotions(temp_emotions, num_tweets_processed, minimum_sample_si
 # Determine the hex color for the city based on the emotional data that will be used for shading in the map
 def determine_hex_color(city):
 
-    # Determines the strongest emotion.
+    # Determines the strongest emotion
     strongest_emotion = ""
     strongest_value = 0
     for emotion in city["emotions"]:
@@ -51,6 +51,7 @@ def determine_hex_color(city):
             strongest_value = city["emotions"][emotion]
             strongest_emotion = emotion
 
+    # Define dictionary for base colors for each emotion        
     base_hexes = {
         "anger": Color("#FF0000"),
         "disgust": Color("#00FF00"),
@@ -59,7 +60,9 @@ def determine_hex_color(city):
         "sadness": Color("#0000FF")
         }
 
+    # Initializes a color variable set to the strongest emotion 
     color_hex = base_hexes[strongest_emotion]
+    
     # Desaturates the base color
     color_hex.saturation *= strongest_value
     city["strongest"] = strongest_emotion
