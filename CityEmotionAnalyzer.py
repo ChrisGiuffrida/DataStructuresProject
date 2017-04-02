@@ -7,6 +7,7 @@ import tweepy
 import json
 import re
 from watson_developer_cloud import ToneAnalyzerV3
+from colour import Color
 
 
 # Updates the number of tweets processed and aggregates the emotional data together for a city
@@ -41,7 +42,28 @@ def average_city_emotions(temp_emotions, num_tweets_processed, minimum_sample_si
 
 # Determine the hex color for the city based on the emotional data that will be used for shading in the map
 def determine_hex_color(city):
-    print "Hex color determined"
+
+    # Determines the strongest emotion.
+    strongest_emotion = ""
+    strongest_value = 0
+    for emotion in city["emotions"]:
+        if (city["emotions"][emotion] > strongest_value):
+            strongest_value = city["emotions"][emotion]
+            strongest_emotion = emotion
+
+    base_hexes = {
+        "anger": Color("#FF0000"),
+        "disgust": Color("#00FF00"),
+        "fear": Color("#CC00FF"),
+        "joy": Color("#FFBF00"),
+        "sadness": Color("#0000FF")
+        }
+
+    color_hex = base_hexes[strongest_emotion]
+    # Desaturates the base color
+    color_hex.saturation *= strongest_value
+    city["strongest"] = strongest_emotion
+    city["color"] = color_hex.hex
 
 
 # Credentials for accessing the Twitter API
@@ -103,8 +125,8 @@ for city in cities['cities']:
     for status in twitter_results['statuses']:
         tweets.append(status['text'])
         actual_tweet_count += 1
-    
-    
+
+
     statuses_first_half  = ""       # Initialize variable to store a string of the first half of the tweets recieved
     statuses_second_half = ""       # Initialize variable to store a string of the second half of the tweets recieved
 
@@ -128,7 +150,7 @@ for city in cities['cities']:
         tweets[num] = re.sub('[\.*]', '', tweets[num])  # Remove periods from the middle of tweets
         tweets[num] = re.sub('[\n]', ' ', tweets[num])  # Remove new line characters from tweets
         tweets[num] = re.sub('[!]', ' ', tweets[num])   # Remove ? from middle of tweets
-        tweets[num] = re.sub('[?]', ' ', tweets[num])   # Remove ! from middle of tweets 
+        tweets[num] = re.sub('[?]', ' ', tweets[num])   # Remove ! from middle of tweets
         statuses_second_half += tweets[num] + ". "      # Concatenate tweets seperated by periods into single string
 
 
@@ -171,6 +193,7 @@ for city in cities['cities']:
 
 
     # Determine the hex color for the city based on the emotional data that will be used for shading in the map
+    # Grey = #808080
     determine_hex_color(city)
 
 
