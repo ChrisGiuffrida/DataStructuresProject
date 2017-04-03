@@ -53,11 +53,11 @@ def determine_hex_color(city):
 
     # Define dictionary for base colors for each emotion
     base_hexes = {
-        "anger": Color("#FF0000"),
-        "disgust": Color("#00FF00"),
-        "fear": Color("#CC00FF"),
-        "joy": Color("#FFBF00"),
-        "sadness": Color("#0000FF")
+        "anger": Color("#FF0000"),      # Red
+        "disgust": Color("#00FF00"),    # Lime
+        "fear": Color("#CC00FF"),       # Violet
+        "joy": Color("#FFBF00"),        # Amber
+        "sadness": Color("#0000FF")     # Blue
         }
 
     # Initializes a color variable set to the strongest emotion
@@ -197,7 +197,7 @@ for city in cities['cities']:
 
     # Determine the hex color for the city based on the emotional data that will be used for shading in the map
     if (city['emotions']['anger'] == 0):
-        # Since there weren't enough tweets, set the strongest to none and the color to grey. 
+        # Since there weren't enough tweets, set the strongest to none and the color to grey.
         city["strongest"] = "none"
         city["color"] = Color("grey").hex
     else:
