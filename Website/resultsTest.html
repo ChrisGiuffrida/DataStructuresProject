@@ -113,6 +113,10 @@ CSS<!DOCTYPE html>
 
     <!-- Initialize Bar Chart-->
     <script>
+        Chart.defaults.global.defaultFontColor = "#01796f";
+        Chart.defaults.global.defaultFontFamily = "'Graphik', sans-serif";
+        Chart.defaults.global.defaultFontSize = 16;
+
         var ctx = document.getElementById("barChart");
         var myChart = new Chart(ctx, {
             type: 'bar',
@@ -142,9 +146,10 @@ CSS<!DOCTYPE html>
                 title: {
                     display: true,
                     text: 'Average Emotional Scores',
-                    fontSize: 20,
-                    fontColor: "#01796f"
-                }, 
+                    fontSize: 25,
+                    fontColor: "#01796f",
+                    fontFamily: "'Graphik', sans-serif"
+                },
                 scales: {
                     yAxes: [{
                         ticks: {
@@ -194,9 +199,10 @@ CSS<!DOCTYPE html>
                 title: {
                     display: true,
                     text: 'Most Common Emotions',
-                    fontSize: 20,
-                    fontColor: "#01796f"
-                }, 
+                    fontSize: 25,
+                    fontColor: "#01796f",
+                    fontFamily: "'Graphik', sans-serif"
+                },
             }
         });
 

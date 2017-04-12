@@ -1,9 +1,10 @@
 html, body{height:100%; margin:0;padding:0}
- 
+
 html,
 body {
   height: 100%;
   background-color: #01796f;
+  font-family: "Graphik", sans-serif;
 }
 body {
   color: #01796f;
@@ -21,9 +22,9 @@ body {
   width: 100%;
   padding: 0;
 }
- 
+
 .row-fluid {height: 100%; display:table-cell; vertical-align: middle;}
- 
+
  .centering {
   float:none;
   margin:0 auto;
@@ -89,13 +90,3 @@ body {
 .logos {
   background-color: rgba(255, 255, 255, 0);
 }
-
-
-
-
-
-
-
-
-
-
