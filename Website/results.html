@@ -18,6 +18,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.bundle.js"></script>
 
     <!-- Link CSS stylesheet -->
+    <link rel="stylesheet" type="text/css" href="Website/CSS/base/fonts.css">
     <link rel="stylesheet" type="text/css" href="Website/CSS/results.css">
 
     <!-- Link jQuery -->
@@ -27,7 +28,7 @@
 </head>
 
 
-<body>
+<body style = "font-family: 'Graphik'">
 
   <!-- Navigation bar with brand logo and search bar -->
     <nav class="navbar navbar-default navbar-fixed-top">
@@ -123,7 +124,7 @@
                 $.getJSON("http://localhost:8888/cities", function(json){
                     jsonResults = json;
                     if((jsonResults["cities"][count]["gotData"] == 1) && (count < 15)) {
-                        circles[count].setOptions({fillColor: jsonResults["cities"][count]["color"], 
+                        circles[count].setOptions({fillColor: jsonResults["cities"][count]["color"],
                             strokeColor: jsonResults["cities"][count]["color"]});
                         circles[count].setCenter({lat: jsonResults["cities"][count]["lat"], lng: jsonResults["cities"][count]["lon"]})
                         circles[count].setMap(map);
