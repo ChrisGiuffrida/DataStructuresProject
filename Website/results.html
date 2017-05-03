@@ -1,114 +1,264 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
-    <meta charset="utf-8">
-    <title>Map</title>
-    <style>
-      /* Always set the map height explicitly to define the size of the div
-       * element that contains the map. */
-      #map {
-        height: 100%;
-      }
-      /* Optional: Makes the sample page fill the window. */
-      html, body {
-        height: 100%;
-        margin: 0;
-        padding: 0;
-      }
-    </style>
-  </head>
-  <body>
-    <div id="map"></div>
+﻿<!DOCTYPE html>
+<html lang = 'en'>
+
+<head>
+    <meta charset='UTF-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>#Emotionalyze Results</title>
+
+    <!-- Link favicon -->
+    <link rel="icon" href="Website/images/Prism.png">
+
+    <!-- Link Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Link bootstrap javascript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.bundle.js"></script>
+
+    <!-- Link CSS stylesheet -->
+    <link rel="stylesheet" type="text/css" href="Website/CSS/results.css">
+
+    <!-- Link jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
+</head>
+
+
+<body>
+
+  <!-- Navigation bar with brand logo and search bar -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="./homepage.html">
+                    <img alt="Brand" src="./images/small-logo.png">
+                </a>
+            </div>
+            <div class="collapse navbar-collapse">
+              <ul class="nav navbar-nav">
+                <li><a class="nav-text" style="color: white; font-size: 130%;" href="./homepage.html">#Emotionalyze</a></li>
+                <li><a class="nav-text" style="color: white; font-size: 130%;" href="#">Information</a></li>
+                <li><a class="nav-text" style="color: white; font-size: 130%;" href="#">Help</a></li>
+              </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Results page-header-->
+    <div class="page-header city-results-title">
+        <h1>City Results</h1>
+    </div>
+
+    <!-- Google Map-->
+    <div class="container">
+        <div id="map-canvas" class="jumbotron"></div>
+    </div> 
+
+    <!-- Key for the cities map-->
+    <div class="container">
+        <div class="jumbotron map-key">
+            <p>This map shows the emotions of the United States!</p>
+        </div>
+    </div>
+
+
+    <!-- Real-time results page header-->
+    <div class="page-header real-time-results">
+        <h1>Real-Time Results</h1>
+    </div>
+
+
+    <!-- Graphs with descriptions-->
+    <div class="container graphs">
+        <div class="col-md-6">
+            <canvas id="barChart" width="100" height="100"></canvas>
+        </div>
+        <div class="col-md-6">
+            <canvas id="pieChart" width="300" height="300"></canvas>
+        </div>
+        <div class="col-md-6">
+            <div class='jumbotron graph-key'>
+                <p>Bar Graph!</p>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="jumbotron graph-key">
+                <p>Pie Chart!</p>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Initialize Google Map-->
     <script>
 
-      var cities = {
-        newyork: {
-          center: {lat: {{data[0]['lat']}} , lng:  {{data[0]['lon']}}  },
-          color: "{{data[0]['color']}}"
-          },
-          losangeles: {
-              center: {lat: {{data[1]['lat']}} , lng:  {{data[1]['lon']}}  },
-              color:  "{{data[1]['color']}}"
-          },
-          chicago: {
-              center: {lat: {{data[2]['lat']}} , lng: {{data[2]['lon']}}  },
-              color: "{{data[2]['color']}}"
-          },dallas: {
-              center: {lat: {{data[3]['lat']}} , lng:  {{data[3]['lon']}}  },
-              color:  "{{data[3]['color']}}"
-          },
-          houston: {
-              center: {lat: {{data[4]['lat']}} , lng:  {{data[4]['lon']}}  },
-              color:  "{{data[4]['color']}}"
-          },
-          washington: {
-              center: {lat: {{data[5]['lat']}} , lng:  {{data[5]['lon']}}  },
-              color: "{{data[5]['color']}}"
-          },philadelphia: {
-              center: {lat: {{data[6]['lat']}} , lng:  {{data[6]['lon']}}  },
-              color: "{{data[6]['color']}}"
-          },
-          miami: {
-              center: {lat: {{data[7]['lat']}} , lng:  {{data[7]['lon']}}  },
-              color: "{{data[7]['color']}}"
-          },atlanta: {
-              center: {lat: {{data[8]['lat']}} , lng:  {{data[8]['lon']}}  },
-              color: "{{data[8]['color']}}"
-          },
-          boston: {
-              center: {lat: {{data[9]['lat']}} , lng:  {{data[9]['lon']}}  },
-              color: "{{data[9]['color']}}"
-          },
-          sanfrancisco: {
-              center: {lat: {{data[10]['lat']}} , lng:  {{data[10]['lon']}}  },
-              color: "{{data[10]['color']}}"
-          },
-          phoenix: {
-              center: {lat: {{data[11]['lat']}} , lng: {{data[11]['lon']}} },
-              color: "{{data[11]['color']}}"
-          },
-          detroit: {
-              center: {lat: {{data[12]['lat']}} , lng:  {{data[12]['lon']}}  },
-              color: "{{data[12]['color']}}"
-          },
-          seattle: {
-              center: { lat: {{data[13]['lat']}} , lng:  {{data[13]['lon']}}  },
-              color: "{{data[13]['color']}}"
-          },
-          minneapolis: {
-              center: {lat: {{data[14]['lat']}} , lng: {{data[14]['lon']}} },
-              color: "{{data[14]['color']}}"
-          }
-      };
 
-      function initMap() {
-        // Create the map.
-        var map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 4,
-          center: {lat: 37.090, lng: -95.712},
-          mapTypeId: 'terrain'
-        });
+        function initMap() {
+            // Create the map.
+            var map = new google.maps.Map(document.getElementById('map-canvas'), {
+                zoom: 4,
+                center: {lat: 37.090, lng: -95.712},
+                mapTypeId: 'terrain',
+                scrollwheel: false,
+                streetViewControl: false,
+                mapTypeControl: false,
+                zoomControl: false
+            });
 
+            var circles = new Array();
+            for(var i = 0; i < 15; i++) {
+                circles.push(new google.maps.Circle({
+                    radius: 160000,
+                    fillOpacity: .85,
+                    strokeOpacity: 1.0
+                }));
+            }
 
+            var count = 0;
+            setInterval(function(){
+                var jsonResults;
+                $.getJSON("http://localhost:8888/cities", function(json){
+                    jsonResults = json;
+                    if((jsonResults["cities"][count]["gotData"] == 1) && (count < 15)) {
+                        circles[count].setOptions({fillColor: jsonResults["cities"][count]["color"], 
+                            strokeColor: jsonResults["cities"][count]["color"]});
+                        circles[count].setCenter({lat: jsonResults["cities"][count]["lat"], lng: jsonResults["cities"][count]["lon"]})
+                        circles[count].setMap(map);
+                        count = count + 1;
+                    }
+                });
+            },1);
 
-        for (var city in cities) {
-
-          var emotionCircle = new google.maps.Circle({
-            strokeColor: cities[city].color,
-            strokeOpacity: 0.8,
-            strokeWeight: 2,
-            fillColor: cities[city].color,
-            fillOpacity: 0.35,
-            map: map,
-            center: cities[city].center,
-            radius: 165000
-          });
         }
-      }
+
     </script>
-    <script async defer
+
+
+        <!-- Initialize Bar Chart-->
+        <script>
+            var req = new XMLHttpRequest();
+            req.open("GET", "localhost:8888/", true);
+            Chart.defaults.global.defaultFontColor = "#01796f";
+            Chart.defaults.global.defaultFontFamily = "'Graphik', sans-serif";
+            Chart.defaults.global.defaultFontSize = 16;
+
+            var ctx = document.getElementById("barChart");
+            var myChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ["Anger", "Disgust", "Fear", "Joy", "Sadness"],
+                    datasets: [{
+                        data: [0, 0, 0, 0, 0],
+                        backgroundColor: [
+                            'rgba(255, 0, 0, 1)',
+                            'rgba(0, 255, 0, 1)',
+                            'rgba(204, 0, 255, 1)',
+                            'rgba(255, 191, 0, 1)',
+                            'rgba(0, 0, 255, 1)'
+                        ],
+                        borderColor: [
+                            'rgba(255, 0, 0, 1.0)',
+                            'rgba(0, 255, 0, 1.0)',
+                            'rgba(204, 0, 255, 1.0)',
+                            'rgba(255, 191, 0, 1.0)',
+                            'rgba(0, 0, 255, 1.0)'
+                        ],
+                        borderWidth: 3
+                    }]
+                },
+                options: {
+                    title: {
+                        display: true,
+                        text: 'Average Emotional Scores',
+                        fontSize: 25,
+                        fontColor: "#01796f",
+                        fontFamily: "'Graphik', sans-serif"
+                    },
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                            beginAtZero:true,
+                            max:1.0
+                            }
+                        }]
+                    }
+                }
+            });
+
+
+            //Initialize pie chart
+            var ctx = document.getElementById("pieChart");
+            var data = {
+                labels: ["Anger", "Disgust", "Fear", "Joy", "Sadness"],
+                datasets: [{
+                    data: [1, 1, 1, 1, 1],
+                    backgroundColor: [
+                        "#ff0000",
+                        "#00ff00",
+                        "#cc00ff",
+                        "#ffbf00",
+                        "#0000ff"
+                    ],
+                    hoverBackgroundColor: [
+                        "#ff0000",
+                        "#00ff00",
+                        "#cc00ff",
+                        "#ffbf00",
+                        "#0000ff"
+                    ]
+                }]
+            };
+
+
+            var myDoughnutChart = new Chart(ctx, {
+                type: 'doughnut',
+                data: data,
+                options: {
+                    animation:{
+                        animateScale:true
+                    },
+                    title: {
+                        display: true,
+                        text: 'Most Common Emotions',
+                        fontSize: 25,
+                        fontColor: "#01796f",
+                        fontFamily: "'Graphik', sans-serif"
+                    },
+                }
+            });
+
+
+            setInterval(function(){
+                var jsonResults;
+                //alert("hi");
+                $.getJSON("http://localhost:8888/realtime", function(json){
+                    jsonResults = json;
+                    myChart.data.datasets[0].data[0] = jsonResults["average_emotions"]["anger"].toFixed(3);
+                    myChart.data.datasets[0].data[1] = jsonResults["average_emotions"]["disgust"].toFixed(3);
+                    myChart.data.datasets[0].data[2] = jsonResults["average_emotions"]["fear"].toFixed(3);
+                    myChart.data.datasets[0].data[3] = jsonResults["average_emotions"]["joy"].toFixed(3);
+                    myChart.data.datasets[0].data[4] = jsonResults["average_emotions"]["sadness"].toFixed(3);
+
+                    myDoughnutChart.data.datasets[0].data[0] = jsonResults["frequency_emotions"]["count"]["anger"];
+                    myDoughnutChart.data.datasets[0].data[1] = jsonResults["frequency_emotions"]["count"]["disgust"];
+                    myDoughnutChart.data.datasets[0].data[2] = jsonResults["frequency_emotions"]["count"]["fear"];
+                    myDoughnutChart.data.datasets[0].data[3] = jsonResults["frequency_emotions"]["count"]["joy"];
+                    myDoughnutChart.data.datasets[0].data[4] = jsonResults["frequency_emotions"]["count"]["sadness"];
+
+                    myChart.update();
+                    myDoughnutChart.update();
+                });
+            },1);
+
+
+        </script>
+
+    <script
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCLIv-SxFdthRJVAMhPuPYn3c_mIQcN2l0&callback=initMap">
     </script>
-  </body>
+
+</body>
 </html>
