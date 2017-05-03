@@ -8,7 +8,7 @@
     <title>#Emotionalyze</title>
 
     <!-- Link favicon -->
-    <link rel="icon" href="images/Prism.png">
+    <link rel="icon" href="Website/images/Prism.png">
 
 	<!-- Link Custom Bootstrap -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -16,7 +16,7 @@
     <!-- Link bootstrap javascript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
-    <link rel="stylesheet" type="text/css" href="./CSS/homepage.css">
+    <link rel="stylesheet" type="text/css" href="Website/CSS/homepage.css">
 </head>
 
 
@@ -28,7 +28,7 @@
 			<div class="col-md-4">
 			</div>
 			<div class="media col-md-4">
-				<img src="images/Logo.png" id="EmotionalyzeLogo" class="img-responsive img-thumbnail pull-left logo" alt="twitter">
+				<img src="Website/images/Logo.png" id="EmotionalyzeLogo" class="img-responsive img-thumbnail pull-left logo" alt="twitter">
 			</div>
 		</div>
 	</div>
@@ -42,12 +42,9 @@
 				<div class="col-md-3">
 				</div>
 	    		<div class="input-group col-md-6">
-	    			<input type="text" class="form-control input-lg" name="query" placeholder="Search for...">
-	      			<a class="input-group-btn" href="resultsTest.html">
-	        			<button class="btn btn-default btn-lg" type="submit" value="Search" id="search-button">
-	        				<span class="glyphicon glyphicon-search"> </span>
-	        			</button>
-	      			</a>
+                    <form>
+    	    			<input type="text" class="form-control input-lg" name="query" placeholder="Search for...">
+                    </form>
 	      		</div>
 		 	</div>
 		</div>
@@ -57,11 +54,13 @@
 	<!-- Warning alerts-->
 	<div class="container">
 	 	<div class="row">
-	 		<div class="col-md-4">
-	 		</div>
-	 		<div class="input-group col-md-4">
-	 			<div class="alert alert-warning" role="warning">Enter a phrase five words in length or less.
-	 			</div>
+	 		<div class="col-md-5"></div>
+	 		<div class="col-md-2">
+	 			<button class="btn btn-default btn-md" type="submit" value="Search" id="search-button">
+					<span class="glyphicon glyphicon-question-sign"> </span>
+					Help
+	        	</button>
+		        </div>
 	 		</div>
 	 	</div>
 	 </div>
@@ -77,13 +76,13 @@
 						<div class="col-md-3">
 						</div>
 						<div class="media col-md-2 col-sm-1">
-							<img src="images/Twitter.png" id="TwitterLogo" class="img-responsive img-thumbnail pull-left logo" alt="twitter">
+							<img src="Website/images/Twitter.png" id="TwitterLogo" class="img-responsive img-thumbnail pull-left logo" alt="twitter">
 						</div>
 						<div class="col-md-2">
 							<h2>|</h2>
 						</div>
 						<div class="media col-md-2">
-							<img src="images/Watson.png" id="WatsonLogo" class="img-responsive img-thumbnail pull-left logo" alt="watson">
+							<img src="Website/images/Watson.png" id="WatsonLogo" class="img-responsive img-thumbnail pull-left logo" alt="watson">
 						</div>
 					</div>
 				</div>
