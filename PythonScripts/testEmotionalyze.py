@@ -1,4 +1,4 @@
-
+#! /usr/bin/env python2.7
 ## Names:       Chris Giuffrida, Thomas Krill, Michael Farren, Pedro SauneroMariaca
 ## Class:       Data Structures CSE-20312
 ## Description: test the function used to create #Emotionalyze
