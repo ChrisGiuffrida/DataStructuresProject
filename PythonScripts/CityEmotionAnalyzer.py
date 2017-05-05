@@ -26,7 +26,12 @@ cities = {'cities' : [
 {'name': 'Phoenix, AZ', 'lat' : 33.4484, 'lon' : -112.0740, 'gotData' : 0},
 {'name': 'Detroit, MI', 'lat' : 42.3314, 'lon' : -83.0458, 'gotData' : 0},
 {'name': 'Seattle, WA', 'lat' : 47.6062, 'lon' : -122.3321, 'gotData' : 0},
-{'name': 'Minneapolis, MN', 'lat' : 44.9778, 'lon' : -93.2650, 'gotData' : 0} ] }
+{'name': 'Minneapolis, MN', 'lat' : 44.9778, 'lon' : -93.2650, 'gotData' : 0},
+{'name': 'Denver, CO', 'lat' : 39.7392, 'lon' : -104.9903, 'gotData' : 0}, 
+{'name': 'St. Louis, MO', 'lat' : 38.6270, 'lon' : -90.1994, 'gotData' : 0},
+{'name': 'Portland, OR', 'lat' : 45.5231, 'lon' : -122.6765, 'gotData' : 0},
+{'name': 'Las Vegas, NV', 'lat' : 36.1699, 'lon' : -115.1398, 'gotData' : 0},
+{'name': 'Salt Lake City, UT', 'lat' : 40.7608, 'lon' : -111.8910, 'gotData' : 0}] }
 
 # Updates the number of tweets processed and aggregates the emotional data together for a city
 def aggregate_Watson_results(watson_results, temp_emotions, num_tweets_processed):

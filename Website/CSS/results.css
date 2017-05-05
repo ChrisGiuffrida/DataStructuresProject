@@ -39,25 +39,23 @@ html, body, #map{
 	background-color: white;
 }
 
+
 .navbar {
 	background-color: #01796f;
-	height: 8%;
-}
-
-.navbar-brand {
 	color: white;
 }
+
 
 .city-results-title {
 	color: #01796f;
 	margin-left: 2cm;
 	margin-right: 2cm;
+	margin-top: 2cm;
 	border-bottom-color: #01796f;
 }
 
 .real-time-results {
 	color: #01796f;
-	margin-top: 2cm;
 	margin-left: 2cm;
 	margin-right: 2cm;
 	border-bottom-color: #01796f;
@@ -67,12 +65,26 @@ html, body, #map{
 	background-color: #01796f;
 	color: white;
 	text-align: center;
+	font-size: 14px;
+	height: 1%;
 }
 
-.title-nav-button {
-	height: 8%;
-	background-color: #01796f;
-	color: white;
+
+
+.modal-body {
+	text-shadow: none;
+	color: #01796f;
+}
+
+
+.modal-header {
+	text-align: center;
+	color: #01796f;
+}
+
+.alert {
+  background-color: white;
+  color: #01796f;
 }
 
 h1 {

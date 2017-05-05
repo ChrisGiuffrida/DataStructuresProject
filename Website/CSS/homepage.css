@@ -95,3 +95,7 @@ body {
   background-color: white;
   color: #01796f;
 }
+
+.modal-content {
+  text-shadow: none;
+}
