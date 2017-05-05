@@ -25,7 +25,7 @@ tweet_count      = 0
 total_emotions   =  {'anger' : 0, 'disgust' : 0, 'fear' : 0, 'joy' : 0, 'sadness' : 0}
 output_emotions  =  {'average_emotions' : {'anger' : 0, 'disgust' : 0, 'fear' : 0, 'joy' : 0, 'sadness' : 0},
                      'frequency_emotions' : {
-                        'count' : {'anger' : 0, 'disgust' : 0, 'fear' : 0, 'joy' : 0, 'sadness' : 0},
+                        'count' : {'anger' : 1, 'disgust' : 1, 'fear' : 1, 'joy' : 1, 'sadness' : 1},
                         'percentage' : {'anger' : 0, 'disgust' : 0, 'fear' : 0, 'joy' : 0, 'sadness' : 0} } }
 
 
@@ -47,7 +47,7 @@ def initialize(query = ''):
     total_emotions   =  {'anger' : 0, 'disgust' : 0, 'fear' : 0, 'joy' : 0, 'sadness' : 0}
     output_emotions  =  {'average_emotions' : {'anger' : 0, 'disgust' : 0, 'fear' : 0, 'joy' : 0, 'sadness' : 0},
                          'frequency_emotions' : {
-                            'count' : {'anger' : 0, 'disgust' : 0, 'fear' : 0, 'joy' : 0, 'sadness' : 0},
+                            'count' : {'anger' : 1, 'disgust' : 1, 'fear' : 1, 'joy' : 1, 'sadness' : 1},
                             'percentage' : {'anger' : 0, 'disgust' : 0, 'fear' : 0, 'joy' : 0, 'sadness' : 0} } }
 
 
@@ -128,8 +128,11 @@ def frequency_emotions(watson_results, output_emotions, tweet_count):
 def getStreamData():
         global tweet_count
         # Remove one tweet from queue, analyze it with watson, and add it to the averaged data
-        tweet_count = watson_call(tweets_queue.get(), total_emotions, tweet_count)
-        average_emotions(total_emotions, output_emotions, tweet_count)
+        if tweets_queue.empty() == True:
+            return output_emotions
+        else:
+            tweet_count = watson_call(tweets_queue.get(), total_emotions, tweet_count)
+            average_emotions(total_emotions, output_emotions, tweet_count)
 
 
         # Print the updated set of emotional data for the twitter stream
