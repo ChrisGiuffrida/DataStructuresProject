@@ -1,5 +1,5 @@
 # #Emotionalyze
-Creating #Emotionalyze, a web application designed to gain insight into how Americans are feeling about current topics.  Powered by Twitter and IBM Watson.
+#Emotionalyz is a web application designed to gain insight into how Americans are feeling about current topics.  Powered by Twitter and IBM Watson.
 
 Contributors:  Chris Giuffrida, Thomas Krill, Pedro Saunero, and Michael Farren
 
